@@ -1,0 +1,14 @@
+$Id: README,v 1.3 2005/10/20 11:24:12 martin Exp $
+
+TDS++ - A wrapper library for FreeTDS.
+This library is based on the following software:
+
+ * FreeTDS <http://www.freetds.org/>
+ * Mickael Faivre-Macon's C++ wrapper for FreeTDS
+    <http://mick.easyplay.com.tw/mick/ftds/ftds.html>
+ * Raketforskning - A C++ wrapper library for FreeTDS' ctlib.
+    <http://http://www.raketforskning.com/tdsplusplus.html>
+
+Copyright (c) 2004, 2005, 2015
+
+This software is LGPL. See COPYING for more information.
