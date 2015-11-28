@@ -15,7 +15,8 @@ Field::Field()
 
 Field::Field(string name, int size) {
     colname = name;
-    data = new char[size] = {0};
+    data = new char[size];
+    data[0] = 0;
 }
 
 /** Destructor */
