@@ -119,7 +119,7 @@ void Query::getresults(void) {
             } while (ret == CS_SUCCEED);
 
             switch ((int) ret) {
-            case CS_END_DATA:
+            case CS_END_DATA: {
                 // Delete unused fields in extra row.
                 Rows::FIte i;
                 for (i = rows->rows.back().begin(); i != rows->rows.back().end(); ++i) {
@@ -127,6 +127,7 @@ void Query::getresults(void) {
                 }
                 rows->rows.pop_back();
                 break;
+	    }
             case CS_ROW_FAIL:
                 throw TDSPP::Exception("Query::getresults: ct_fetch() returned CS_ROW_FAIL.");
             case CS_FAIL:
