@@ -138,7 +138,7 @@ void Query::getresults(void) {
             
             rows->currentrow = 0;
             rowcount = rows->rows.size();
-            return;
+            break;
         case CS_COMPUTE_RESULT:
             throw TDSPP::Exception("Query::getresults: ct_results() unexpected CS_COMPUTE_RESULT.");
         default:
