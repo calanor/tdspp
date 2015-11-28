@@ -66,7 +66,6 @@ bool Query::addfield(void) {
     //if (datafmt.format == CS_FMT_UNUSED) return false;
     datafmt.format    = CS_FMT_NULLTERM;
     datafmt.datatype  = CS_CHAR_TYPE;
-    if (datafmt.maxlength>1024) datafmt.maxlength = 1024;
     
     Field* f = new Field(datafmt.name, datafmt.maxlength);
     CS_INT datalength;
