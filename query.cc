@@ -57,7 +57,10 @@ bool Query::addfield(void) {
         != CS_SUCCEED) {
         throw TDSPP::Exception("Query::addfield: ct_describe() failed");
     }
-    
+
+    /** Store enough space for UNICODE chars in tds version >= 7.0 */
+    datafmt.maxlength = datafmt.maxlength *2 + 1;
+
     /** DATETYPE is reported as 8 bytes from server, 
      *  but becomes 32 when converted. Adjusting for that.
      */
