@@ -17,7 +17,7 @@ class Field {
 public:
     /** Name of the column */
     string colname;
-    
+
     /** Constructor */
     Field();
     /** Constructor */
@@ -29,9 +29,12 @@ public:
     string   tostr(void);
     /** Return integer value of a field. */
     long     toint(void);
+    /** Return field returned lenght */
+    int      getDataLength() { return datalength; }
     
 private:
     char* data;
+    int   datalength;
 };
 
 /** Row class */

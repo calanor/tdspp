@@ -68,14 +68,13 @@ bool Query::addfield(void) {
     datafmt.datatype  = CS_CHAR_TYPE;
     
     Field* f = new Field(datafmt.name, datafmt.maxlength);
-    CS_INT datalength;
     CS_SMALLINT ind;
 
     if (ct_bind(TDS->cmd, 
                 rows->rows[rows->currentrow].size()+1, 
                 &datafmt, 
                 f->data, 
-                &datalength, 
+                &f->datalength,
                 &ind) != CS_SUCCEED) {
         delete f;
         throw TDSPP::Exception("Query::addfield: ct_bind() failed");
