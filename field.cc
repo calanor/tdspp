@@ -65,8 +65,9 @@ void Rows::printheader(void) {
 }
 
 void Rows::print(void) {
+    cout << "| ";
     for (unsigned int i=0; i < rows[currentrow].size(); i++) {
-        cout << rows[currentrow][i]->colname << 
-            "=" << rows[currentrow][i]->tostr() << endl;
+         cout << rows[currentrow][i]->tostr() << " | ";
     }
+    cout << endl;
 }
