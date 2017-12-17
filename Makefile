@@ -10,11 +10,11 @@ MINOR	= 2
 PREFIX = /usr/local
 
 CC	= g++
-CFLAGS	= -Wall -ansi -fPIC
+CFLAGS	= -Wall -ansi -fPIC -std=c++11
 STRIPFLAG  = -s
 
 ifdef DEBUG
-CFLAGS    += -DDEBUG -g
+CFLAGS    += -DDEBUG -g -std=c++11
 STRIPFLAG  =  
 endif
 
@@ -27,7 +27,8 @@ INCS	= -I/usr/local/include
 LIBS 	= -L/usr/local/lib -lct -shared -ldl
 
 LIBNAME = tds++
-LIB 	= libtds++.so.$(MAJOR).$(MINOR)
+# LIB 	= libtds++.so.$(MAJOR).$(MINOR)
+LIB = libtds++.so
 SONAME  = libtds++.so
 
 .cc.o:	*.hh

@@ -55,6 +55,7 @@ private:
     CS_CONNECTION *conn;
     CS_COMMAND *cmd;
     CS_RETCODE init();
+    CS_INT timeval = 15;
 };
 
 #endif /* VOIDSOFT_TDSPP_TDSPP_H */

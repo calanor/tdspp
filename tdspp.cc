@@ -66,6 +66,18 @@ void TDSPP::login(void) {
         throw Exception("TDSPP::login: ct_con_props() SET PASSWORD failed!");
         return;
     }
+    if (ct_con_props(conn, CS_SET, CS_LOGIN_TIMEOUT, 
+                     (CS_VOID*)&timeval, CS_NULLTERM, 
+                     (CS_INT*)NULL) != CS_SUCCEED) {
+        throw Exception("TDSPP::login: ct_con_props() SET LOGIN_TIMEOUT failed!");
+        return;
+    }
+    if (ct_con_props(conn, CS_SET, CS_TIMEOUT, 
+                     (CS_VOID*)&timeval, CS_NULLTERM, 
+                     (CS_INT*)NULL) != CS_SUCCEED) {
+        throw Exception("TDSPP::login: ct_con_props() SET TIMEOUT failed!");
+        return;
+    }
     if (ct_connect(conn, (CS_CHAR*)server.c_str(), 
                    CS_NULLTERM) != CS_SUCCEED) {
         throw Exception("TDSPP::login: Connection failed!");

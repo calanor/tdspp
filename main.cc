@@ -14,11 +14,11 @@ int main(int argc, char **argv) {
     TDSPP *db = new TDSPP();
     try {
         /* Connect to database. */
-        db->connect("SERVER:PORT", "USERNAME", "PASSWORD");
+        db->connect("localhost:1433", "admin", "12345678");
         /* Execute command. */
-        db->execute("use DATABASE");
+        db->execute("use master");
         /* Create query. */
-        Query *q = db->sql("SQL_QUERY");
+        Query *q = db->sql("select current_timestamp right_now");
         
         try {
             /* Execute SQL query. */
