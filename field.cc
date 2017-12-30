@@ -13,10 +13,11 @@ Field::Field()
     : data(NULL) {
 }
 
-Field::Field(string name, int size) {
+Field::Field(string name, int size, int datatype_) {
     colname = name;
     data = new char[size];
     data[0] = 0;
+    datatype = datatype_;
 }
 
 /** Destructor */

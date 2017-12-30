@@ -21,7 +21,7 @@ public:
     /** Constructor */
     Field();
     /** Constructor */
-    Field(string name, int size);
+    Field(string name, int size, int datatype_);
     /** Destructor */
     ~Field();
 
@@ -35,6 +35,7 @@ public:
 private:
     char* data;
     int   datalength;
+    int   datatype;
 };
 
 /** Row class */

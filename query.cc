@@ -66,11 +66,14 @@ bool Query::addfield(void) {
      */
     if (datafmt.maxlength < 32) datafmt.maxlength = 32;
     
+    // Store the actual datatype before converting to char_type.
+    int dt = datafmt.datatype;
+
     //if (datafmt.format == CS_FMT_UNUSED) return false;
     datafmt.format    = CS_FMT_NULLTERM;
     datafmt.datatype  = CS_CHAR_TYPE;
     
-    Field* f = new Field(datafmt.name, datafmt.maxlength);
+    Field* f = new Field(datafmt.name, datafmt.maxlength, dt);
     CS_SMALLINT ind;
 
     if (ct_bind(TDS->cmd, 
