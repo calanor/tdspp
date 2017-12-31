@@ -4,6 +4,7 @@
  */
 
 #include <iostream>
+#include <sstream>
 #include "field.hh"
 #include "tdspp.hh" // for TDSPP::Exception
 
@@ -25,15 +26,33 @@ Field::~Field() {
     delete [] data; 
 }
 
-string Field::tostr() {
+string Field::to_str() {
     if (!data) throw TDSPP::Exception("Field::tostr: Data not initialized");
     return data;
 }
 
-/* Not implemented */
-long Field::toint() {
+long Field::to_int() {
     if (!data) throw TDSPP::Exception("Field::toint: Data not initialized");
-    return 0;
+    int i = 0;
+    stringstream ss(data);
+    ss >> i;
+    return i;
+}
+
+/* Not precise! */
+double Field::to_double() {
+    if (!data) throw TDSPP::Exception("Field::to_double: Data not initialized");
+    switch (datatype) {
+        case CS_REAL_TYPE: case CS_FLOAT_TYPE: case CS_MONEY_TYPE: case CS_MONEY4_TYPE: case CS_NUMERIC_TYPE: case CS_DECIMAL_TYPE: 
+        {
+            double d = 0;
+            stringstream ss(data);
+            ss >> d;
+            return d;
+        }
+        default:
+        return 0;
+    }
 }
 
 /** Class Rows */
@@ -68,7 +87,7 @@ void Rows::printheader(void) {
 void Rows::print(void) {
     cout << "| ";
     for (unsigned int i=0; i < rows[currentrow].size(); i++) {
-         cout << rows[currentrow][i]->tostr() << " | ";
+         cout << rows[currentrow][i]->to_str() << " | ";
     }
     cout << endl;
 }

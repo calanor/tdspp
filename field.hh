@@ -8,6 +8,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -25,10 +26,13 @@ public:
     /** Destructor */
     ~Field();
 
+    // CS type reference: https://github.com/FreeTDS/freetds/blob/master/include/cspublic.h
     /** Return string value of a field. */
-    string   tostr(void);
+    string   to_str(void);
     /** Return integer value of a field. */
-    long     toint(void);
+    long     to_int(void);
+
+    double to_double();
     /** Return field returned lenght */
     int      getDataLength() { return datalength; }
     

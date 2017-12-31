@@ -193,9 +193,9 @@ bool Query::eof() {
 }
 
 string Query::operator[] (const char *s) {
-    return fields(s)->tostr();
+    return fields(s)->to_str();
 }
 
 string Query::operator[] (string s) {
-    return fields(s)->tostr();
+    return fields(s)->to_str();
 }

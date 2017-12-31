@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
         /* Execute command. */
         db->execute("use master");
         /* Create query. */
-        Query *q = db->sql("select current_timestamp right_now, 1 integer_type, 0.1 float_type");
+        Query *q = db->sql("select getdate() datetime_type, current_timestamp right_now, 1 integer_type, 0.1 float_type");
         
         try {
             /* Execute SQL query. */
@@ -28,8 +28,11 @@ int main(int argc, char **argv) {
             while (!q->eof()) {
                 cout << "| ";
                 for (int i=0; i < q->fieldcount; i++) {
-                    auto fd = q->fields(i); 
-                    cout << q->fields(i)->tostr() << " | ";
+                    auto fd = q->fields(i);
+                    auto v = fd->to_int();
+                    auto v1 = fd->to_double();
+                    auto v2 = fd->to_str(); 
+                    cout << v2 << " | ";
                 }
                 cout << endl;
                 q->next();
