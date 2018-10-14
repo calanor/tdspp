@@ -33,8 +33,10 @@ public:
     long     to_int(void);
 
     double to_double();
-    /** Return field returned lenght */
+    /** Return field returned length */
     int      getDataLength() { return datalength; }
+
+    int      getDataType() { return datatype; }
     
 private:
     char* data;
