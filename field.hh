@@ -33,6 +33,9 @@ public:
     long     to_int(void);
 
     double to_double();
+
+    int64_t to_int64();
+
     /** Return field returned length */
     int      getDataLength() { return datalength; }
 

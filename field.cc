@@ -39,6 +39,14 @@ long Field::to_int() {
     return i;
 }
 
+long Field::to_int64() {
+    if (!data) throw TDSPP::Exception("Field::toint: Data not initialized");
+    int64_t i = 0;
+    stringstream ss(data);
+    ss >> i;
+    return i;
+}
+
 /* Not precise! */
 double Field::to_double() {
     if (!data) throw TDSPP::Exception("Field::to_double: Data not initialized");
