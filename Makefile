@@ -40,7 +40,7 @@ $(LIB): $(OBJS)
 all:: $(LIB)
 
 main:: 
-	g++ -g -ltds++ main.cc -o main
+	g++ -g -std=c++11 main.cc -o main -L/usr/local/lib -ltds++ -lct
 clean::
 	rm -f $(OBJS)
 	rm -f $(LIB)
