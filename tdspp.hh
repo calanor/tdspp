@@ -46,7 +46,9 @@ public:
         explicit Exception(const string& msg="") {message = msg;}
         /** Destructor */
         virtual ~Exception() throw() { }
-    };    
+    };
+
+    CS_RETCODE connection_state();    
 private:
     void login();
     string server, username, password;
@@ -56,6 +58,7 @@ private:
     CS_COMMAND *cmd;
     CS_RETCODE init();
     CS_INT timeval = 15;
+    CS_RETCODE conn_retcode;
 };
 
 #endif /* VOIDSOFT_TDSPP_TDSPP_H */

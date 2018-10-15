@@ -78,8 +78,9 @@ void TDSPP::login(void) {
         throw Exception("TDSPP::login: ct_con_props() SET TIMEOUT failed!");
         return;
     }
-    if (ct_connect(conn, (CS_CHAR*)server.c_str(), 
-                   CS_NULLTERM) != CS_SUCCEED) {
+    conn_retcode = ct_connect(conn, (CS_CHAR*)server.c_str(), 
+                   CS_NULLTERM);
+    if (conn_retcode != CS_SUCCEED) {
         throw Exception("TDSPP::login: Connection failed!");
         return;
     }
@@ -94,6 +95,8 @@ void TDSPP::disconnect(void) {
         throw Exception("TDSPP::disconnect: ct_cancel() failed!");
         return;
     }
+    if (conn_retcode != CS_SUCCEED)
+      return;
     ct_cmd_drop(cmd);
     ct_close(conn, CS_UNUSED);
 }
@@ -145,4 +148,8 @@ Query* TDSPP::sql(const string& sql) {
     Query* q = new Query(this);
     q->command = sql;
     return q;  
+}
+
+CS_RETCODE TDSPP::connection_state() {
+  return conn_retcode;
 }
