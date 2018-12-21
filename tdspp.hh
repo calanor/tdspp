@@ -59,6 +59,8 @@ private:
     CS_RETCODE init();
     CS_INT timeval = 15;
     CS_RETCODE conn_retcode;
+    // Default TDS Version to 7.4 (SQL 2012-2014)
+    int tdsversion = CS_TDS_74;
 };
 
 #endif /* VOIDSOFT_TDSPP_TDSPP_H */

@@ -78,6 +78,12 @@ void TDSPP::login(void) {
         throw Exception("TDSPP::login: ct_con_props() SET TIMEOUT failed!");
         return;
     }
+    if (ct_con_props(conn, CS_SET, CS_TDS_VERSION, 
+                     (CS_VOID*)&tdsversion, CS_NULLTERM, 
+                     (CS_INT*)NULL) != CS_SUCCEED) {
+        throw Exception("TDSPP::login: ct_con_props() SET TDS_VERSION failed!");
+        return;
+    }
     conn_retcode = ct_connect(conn, (CS_CHAR*)server.c_str(), 
                    CS_NULLTERM);
     if (conn_retcode != CS_SUCCEED) {
